@@ -1,0 +1,121 @@
+.intro-text{
+	color: white;
+	font-size: 14pt;
+}
+
+.subtitle {
+	font-size: 20pt;
+	color:black;
+	text-decoration: none;
+	text-align: left;
+	font-weight: bold;
+	/*display: inline-block;*/
+	display: block;
+}
+
+.subsubtitle {
+	font-size: 16pt;
+	color:black;
+	/*color:white;*/
+	text-decoration: none;
+	text-align: left;
+	font-weight: bold;
+	display: inline;
+	/*display: inline-block;*/
+}
+
+.experience{
+	font-size: 10pt;
+}
+
+.majorTextBox {
+	font-size: 14pt;
+	line-height: 1.5;
+	color:black;
+	/*color:white;*/
+	text-decoration: none;
+	text-align: left;
+	margin: 0 0 20px;
+	/*display: inline-block;*/
+	display: block;
+	overflow: auto;
+}
+
+.centering{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.projectImage_original{
+	width: 140px;
+	float:left;
+	border: black solid thin; 
+	margin-right:10px;
+	display: inline;
+
+}
+
+.projectImage {
+	width: 150px;
+	outline: black solid thin; 
+	margin-right:2%;
+	display: inline;
+}
+
+.projectText{
+	width:80%; 
+	float:right;
+}
+
+
+.strokeme
+{
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  width: 100%;
+}
+
+.topnav div {
+	float: left;
+	display: inline;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	background-color: #4CAF50;
+}
+
+.topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topnav a:hover {
+	/*background-color: #ddd;
+	color: black;*/
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	text-decoration: none;
+}
+
+.topnav a.active {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+	text-decoration: none;
+}
