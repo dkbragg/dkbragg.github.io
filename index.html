@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<head>
+	<meta name="author" content="Danielle Bragg" />
+	<meta name="description" content="Danielle Bragg's website - PhD student in Computer Science at the University of Washington with interests in Human Computer Interaction, Accessibility, and Machine Learning" />
+	<title>Danielle Bragg - Home </title>
+	<meta name="keywords" content="University of Washington, UW, uw, Danielle Bragg, Computer Science, Human Computer Interaction, HCI, Machine Learning, ML, accessibility" />
+	<!--<meta name = "viewport" content = "user-scalable = yes">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="shortcut icon" href="images/light_transparent.png">
+
+	<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+
+    <link href="libraries/bootstrap.min.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+	<script type='text/javascript'>
+
+		
+		$(document).ready(function(){
+			
+			$(".topnav a").click(function(){
+			console.log('done!');
+			$('html, body').animate({
+				scrollTop: $(this.hash).offset().top - $(".topnav").height()}, 'slow');
+			
+			});
+			
+		});
+	
+	</script
+	
+	
+</head>
+
+<body>
+
+
+    <header class="intro" style="background-image: url('images/20160616_203445.jpg'); background-size: cover;">
+
+
+			<div class="topnav">
+			  <div>Danielle Bragg</div>
+			  <a href="#about">About</a>
+			  <a href="#research">Research</a>
+			  <a href="#honors">Honors</a>
+			  <a href="#publications">Publications</a>
+			</div>
+
+
+		<div class="intro strokeme">
+			<div class="centering">
+			 <img class="img-circle" src="images/dbragg_headshot.png" style="width:200px; border: 6px solid white;"> 
+				<h1 class="" style="font-size:55px; font-weight:bold; color:white;">Danielle Bragg</h1>
+			  <p class="intro-text" style="">PhD Student <br>
+				Computer Science & Engineering <br>
+				University of Washington <br>
+				dkbragg [at] cs.washington.edu 
+			  </p>
+			</div>
+
+        </div>
+
+    </header>
+	
+	
+	<div class="container">
+		
+		<div class = "content">
+		<br>
+		<h2 class="subtitle" id="about"> ABOUT ME </h2> <br>
+		
+		<div class = "majorTextBox"> 
+		
+			<div style="width:65%; margin-right:2%; display: inline-block;">
+				<p>
+					I am a PhD candidate in Computer Science at the <a dataquery="#Link14iu" href="http://www.cs.washington.edu/" target="_blank" style="cursor: pointer;">University of Washington</a> advised by <a dataquery="#Link14iu" href="http://www.cs.washington.edu/people/faculty/ladner/" target="_blank" style="cursor: pointer;"> Richard Ladner</a>. My research interests combine <b>Accessibility</b>, <b>Human-Computer Interaction</b>, and <b>Applied Machine Learning</b>. 
+					In my research, I take data-driven approaches to address accessibility problems, helping to make the world a more equitable place for people with disabilities.
+				</p>
+				<p>
+					My diverse past research projects have spanned data visualization, computational biology, computer music, applied mathematics, and network protocols.
+				</p>					
+				
+			</div>
+			
+			<div style="width:33%; float:right;">
+				<h3><b> EXPERIENCE </b> </h3>
+				<table class="experience" style="width:100%">
+					<tr> 
+						<th style="width:30%" valign="top"> Current </th>
+						<td> PhD Student, UW CSE </td>
+					</tr>
+					<tr>
+						<th valign="top"> 2015, 2016 </th>
+						<td> Intern, <a dataquery="#Link14iu" href="http://www.microsoft.com/en-us/research/lab/microsoft-research-new-england/" targt="_blank" style="cursor: pointer;">Microsoft Research New England</a> </td>
+					</tr>
+					<tr>
+						<th valign="top"> 2014 </th>
+						<td> Intern, <a dataquery="#Link14iu" href="http://www.bing.com/">Microsoft Bing</a> </td>
+					</tr>
+					<tr>
+						<th valign="top"> 2011-2012 </th>
+						<td> PhD Student, <a dataquery="#Link14iu" href="http://www.cs.princeton.edu/" targt="_blank" style="cursor: pointer;"> Princeton </a></td>
+					</tr>
+					<tr>
+						<th valign="top"> 2010-2011 </th>
+						<td> Research Assistant, <a dataquery="#Link14iu" href="http://www.cs.seas.gwu.edu/networking-and-mobile-computing"> George Washington University</a> </td>
+					</tr>
+					<tr>
+						<th valign="top"> 2010 </th>
+						<td> AB, Applied Mathematics, <i> cum laude</i>, <a dataquery="#Link14iu" href="http://www.seas.harvard.edu/programs/applied-mathematics"> Harvard </a> </td>
+					</tr>
+				</table>
+				
+				<p class="experience"> For more details, please see my <a href="DBragg_CV.pdf">CV</a>. </p>
+			</div>
+		</div>
+		
+
+		<h2 class = "subtitle" id="research"> RESEARCH </h2> <br>
+		
+		<div class="majorTextBox">
+			My thesis work makes visual language more available to sign language users and low-vision readers, allowing marginalized groups to "plug into" existing communication infrastructure. As interactive technologies become increasingly rich, multi-modal, and pervasive, ensuring accessibility becomes increasingly important and challenging. At the same time, new technologies offer new capabilities that can improve accessibility, which I capitalize on in my work. In particular, I make use of crowdsourced perceptual data to power solutions to accessibility challenges. 
+			
+		</div>
+		<br>
+		
+		
+		<div class = "majorTextBox">
+		
+		
+			<img class="projectImage_original" alt="The word livefonts in several scripts, including an animated script" src="images/livefonts_crop.gif" ></img>
+				
+				
+				<h3 class = "subsubtitle"> SMARTFONTS & LIVEFONTS </h3>
+			
+				By redesigning English letterforms, <a href="images/Smartfonts.mp4">smartfonts</a> and <a href="images/Livefonts.mp4">livefonts</a> challenge our assumption that text should be rendered in traditional letterforms on modern screens. Personal devices have made this challenge possible, by allowing users to adopt new character systems without language reform or mass adoption. Smartfonts can be installed and integrated into existing software systems, e.g., as font files, allowing individuals to change their text displays without impacting anybody else's reading experience. While smartfont designs leverage color, shape, and spacing capabilities of modern fonts, livefonts add animation to the design space. Potential benefits include increased legibility, increased privacy, aesthetics, and fun. Try it out by downloading <a href="images/Visibraille.ttf">a smartfont</a> and uploading it to the <a href="https://chrome.google.com/webstore/detail/font-changer-with-google/jgjhhoglgjdklldfgoffdiaceffijeke?hl=en">Font Changer</a> Chrome browser extension, to render all your browser content in a smartfont!
+
+		</div>
+		
+		<!--
+		<div class = "majorTextBox">
+		
+		
+			<img class="projectImage_original" alt="an animated ASL character for the sign UNDERSTAND" src="images/understand.gif" ></img>
+			
+
+				<div class = "subsubtitle"> ASLive - (work in progress) </div>
+			
+				While ASL character systems offer many potential benefits, none have been widely adopted. The time and effort required to learn these character systems is one obstacle to adoption. All past ASL scripts, designed for paper rendering, have been stationary (non-animated). This makes it difficult to anotate movement naturally, making the system harder to learn. Unlike traditional paper displays, today's screen displays support animation. Capitalizing on this capability, we propose the first animated ASL character system, ASLive. By representing movement iconically, ASLive potentially eliminates the symbol memorization barrier.
+
+		</div>
+		-->
+
+			
+
+		<div class = "majorTextBox">
+			<img class="projectImage_original" alt="Workflow of ASL-Search" src="images/asl-search_interface.png"></img>
+			
+
+			<h3 class = "subsubtitle"> ASL-SEARCH - (release soon) </h3>
+			ASL-Search is an American Sign Language (ASL) dictionary that lets students look up the English meanings of signs. Looking up the meaning of a sign is difficult because a sign is a 3D movement not easily described with written words. Our dictionary lets users enter a set of features including hand shape, location, and movement, to describe a sign and look it up. The dictionary learns from the features that previous users enter to improve results for future users.
+
+		</div>
+
+		
+
+		
+
+
+		<div class = "majorTextBox">
+			<img class="projectImage_original" alt="Workflow of ASL-Search" src="images/asl-flash_descriptive.png" width="100px" style="float:left; outline: black solid thin; margin-right:10px"></img>
+			
+			<h3 class = "subsubtitle"> ASL-FLASH - (<a dataquery="#Link14iu" href="http://www.aslflash.org" target="_blank" style="cursor: pointer;">www.aslflash.org</a>) </h3>
+			
+			ASL-Flash is a site that both helps people learn American Sign Language and provides featural descriptions of signs. The site provides "flashcards" of signs, showing visitors videos of signs and quizzing them on the English meanings and compositional features (e.g., handshape and hand location). The data that users provide helps us build the ASL-Search dictionary. Check it out at <a dataquery="#Link14iu" href="http://www.aslflash.org" target="_blank" style="cursor: pointer;"> www.aslflash.org </a> and learn some signs!
+		</div>
+		
+		
+		
+		<div class = "majorTextBox">
+			<img class="projectImage_original" alt="Screen shot of the study, with the words 'Press play when you are ready' and a large play button" src="images/listening_rates_play.png"></img>
+			
+
+			<h3 class = "subsubtitle"> LISTENING RATES </h3>
+		
+			We provide the first inclusive, large-scale study on human listening rates. As conversational agents and digital assistants become increasingly pervasive, understanding their synthetic speech becomes increasingly important. Speech synthesis is also becoming more sophisticated, providing the opportunity to optimize speech rate to save users time. Run on LabintheWild, our study used volunteer participants, and was fully accessible. Our results inform synthetic speech rate optimization and future inclusive crowdsourced studies.
+
+		</div>
+		
+		
+		
+		<div class = "majorTextBox">
+			<img class="projectImage_original" alt="Screen shot of the sound detector app, listing sounds of interest to the user" src="images/detector_small.png"></img>
+			
+
+			<h3 class = "subsubtitle"> SOUND DETECTOR</h3>
+			
+			The sound detector is a trainable app that alerts users to sounds of interest (e.g., a door knock, appliance running, or alarm ringing). Sounds provide important information, and non-auditory cues are not always available. In these situations, a sound detector can be useful to deaf or hard-of-hearing people. Our mobile app design provides personalized sound awareness through a ubiquitous device. The user records examples of sounds, and the app notifies the user when they occur.
+
+		</div>
+		
+		<h2 class = "subtitle" id="honors"> HONORS </h2>
+		
+		<br>
+		
+		<div class = "majorTextBox">
+			<ul>
+			
+			
+				<li> <a href="http://www.aspirations.org/2017-ncwit-collegiate-award-recipients"> National Center for Women & Information Technology (NCWIT) Collegiate Award</a>, 2017 </li>
+				<li> <a href="http://expd.uw.edu/expo/scholarships/JMRS">Judith M. Runstad Wells Fargo Women's Roundtable Scholarship</a>, 2017 </li>
+				<li> <a href="https://disabilitystudies.washington.edu/Hahn_Lang_awards_2017">Harlan Hahn Endowment Fund Grant</a>, 2017 </li>
+				<li> <a href="http://www.microsoft.com/en-us/research/academic-program/womens-fellowship-program/">Microsoft Research Graduate Women's Scholarship</a>, 2012</li>
+			
+			</ul>
+		</div>
+		
+		
+		<h2 class = "subtitle" id="publications"> PUBLICATIONS (<a dataquery="#Link14iu" href="http://scholar.google.com/citations?user=6fd-LUEAAAAJ&hl=en&oi=ao">Google Scholar</a>)</h2><br>
+		
+		<div class = "majorTextBox">
+			<ol>
+				
+				<li> <b>D. Bragg</b>, C. Bennett, K. Reinecke, R. Ladner. "A Large Inclusive Study of Human Listening Rates." Proc. CHI 2018. (paper, to appear) </li>
+				
+				<li> <b>D. Bragg</b>, S. Azenkot, K. Larson, A. Bessemans, A. Kalai. "Designing and Evaluating Livefonts." Proc. UIST. <!--(ACM Symposium on User Interface Software and Technology)--> Quebec, Canada. October 2017. <a href="papers/livefonts.pdf">(paper)</a> <small> <b> <--- NOTE: Open with Adobe Reader to see animations <i>in the PDF itself!</i> </b> </small>  </li>
+				
+				<li> <b>D. Bragg</b>, S. Azenkot, A. Kalai. "Reading and Learning Smartfonts." Proc. UIST. <!--(ACM Symposium on User Interface Software and Technology)--> Tokyo, Japan. October 2016. <a href="papers/Reading_and_Learning_Smartfonts.pdf">(paper)</a> </li>
+				
+				<li> <b>D. Bragg</b>, N. Huynh, R. Ladner. "A Personalizable Mobile Sound Detector App Design for Deaf and Hard-of-Hearing Users." Proc. ASSETS. <!--(ACM SIGACCESS Conference on Computers and Accessibility).--> Reno, NV. October 2016. <a href="papers/Personalizable_Mobile_Sound_Detector.pdf"> (paper) </a> </li>
+				
+				<li> <b>D. Bragg</b>, K. Rector, R. Ladner. "A User-Powered American Sign Language Dictionary." Proc. CSCW. <!--(ACM Conference on Computer-Supported Cooperative Work and Social Computing).--> Vancouver, Canada. March 2015. <a href="papers/A_User-Powered_American_Sign_Language_Dictionary.pdf"> (paper) </a> </li>
+			
+				<li> <b>D. Bragg</b>. “Synchronous Data Flow Modeling for DMIs.” Proc. NIME. <!--(New Interfaces for Musical Expression).-->
+	Daejeon and Seoul, Republic of Korea. May 2013. <a href="papers/Synchronous_Data_Flow_Modeling.pdf" > (paper) </a> </li>
+
+				<!--<li> Bragg, D., M. Yun, H. Bragg, H-A. Choi. “Intelligent Transmission of Patient Sensor Data in Wireless Hospital Networks.” Proc. AMIA (American Medical Informatics Association) Symposium. Chicago, Illinois. Nov 2012. <a href="papers/Intelligent_Transmission.pdf" > (paper) </a> </li>-->
+				
+				<!--<li> Bragg, D., M. Yun, H. Bragg, and H.A. Choi. “Game Theoretical Approach to Scheduling Transmission of Data for Hospital Patients.” Tel Aviv International Workshop on Game Theory. Tel Aviv, Israel. June 2011. (poster) </li>-->
+				
+				<li> M. Yun, <b>D. Bragg</b>, A. Arora, and H.A. Choi. “Battle Event Detection Using Sensor Networks and Distributed Query Processing.” Proc. Computer Communications Workshops (IEEE INFOCOM). Pages 750-755. Shanghai, China. April 2011. <a href="papers/Battle_Event_Detection.pdf" > (paper) </a> </li>
+				
+				<li> Y. Zhou, <b>D. Bragg</b>, M. Yun, and H.A. Choi. “On Data Transmission Scheduling considering Switching
+	Penalty in Mobile Sensor Networks.” Proc. Computer Communications Workshops (IEEE INFOCOM). Pages 774-779. Shanghai, China. April 2011. <a href="papers/On_Data_Transmission_Scheduling.pdf" > (paper) </a> </li>
+
+				<li> <b>D. Bragg</b>, “Quantification and Display of Emotions in Music.” Honors Senior Thesis. Harvard University
+	Department of Applied Mathematics. June 2010. <a href="papers/Bragg_Thesis.pdf" > (undergraduate thesis) </a> </li>
+
+				<li> Y. Yang, A. Chow, L. Golubchik, and <b>D. Bragg</b>. “Improving QoS in BitTorrent-like VoD Systems.” Proc.
+	IEEE INFOCOM. Pages 1-9. San Diego, California. March 2010. <a href="papers/Imrpoving_QoS_in_BitTorrent-like_VoD_Systems.pdf" > (paper) </a> </li>
+
+			</ol>
+		</div>
+		
+		<!--
+		<div class = "subtitle"> TEACHING </div>
+		<br>
+		
+		<div class = "majorTextBox">
+			 <a dataquery="#Link14iu" href="http://courses.cs.washington.edu/courses/cse446/13sp/">CSE 446: Machine Learning, 2013</a> - undergraduate Machine Learning course
+		</div>
+		-->
+
+
+		<div class="centering">
+		<h2 style="font-size: 16pt; font-weight: bold;"> CONTACT DANIELLE </h2>
+		<a href="mailto:dkbragg@cs.washington.edu" title="Email me!"> Click to email me. </a>
+		</div>
+		<br>
+	</div>
+
+</body>
+</html>
