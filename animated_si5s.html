@@ -1,0 +1,762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<head>
+  <title>Animated Si5s</title>
+  <link rel="shortcut icon" href="">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta name="keywords" content="python web application" />
+  <meta name="description" content="pyramid web application" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+
+
+</head>
+
+<style>
+p {
+	font-size: 12pt;
+}
+
+h1 {
+	font-size: 20pt;
+}
+
+h2 {
+	font-size: 16pt;
+}
+
+</style>
+
+<body class="inBody_plain">
+
+	<div id="bodycontainer" style="font-size: 20px; margin: 1em;">
+
+		<link href="animations.css" rel="stylesheet" type="text/css" />
+
+		<h1> Animated Si5s : the first animated character system protoype for a sign language </h1>
+		
+		<p> Danielle Bragg, University of Washington <br>
+		Raja Kushalnagar, Gallaudet University. <br>
+		Richard Ladner, University of Washington </p>
+		
+		<p> Like other sign languages, American Sign Language (ASL) is a movement-based language without a standard written form.
+		
+		Though ASL is not typically written, much of society and the technical world communicates through written text, excluding many ASL users from equal participation. A standard written form of ASL would make text-based platforms newly usable in ASL, including email clients, text messengers, social media, text editors, and much of the internet, as well as text-based resources like books and newspapers. It would also satisfy many Deaf people’s desire to express themselves through writing in their primary language (e.g., [1]). Other possible benefts include promotion and dissemination of the language, and low-cost documentation and cultural preservation (e.g., [2, 3]).
+
+		Sign languages do not have a standard written form, preventing millions of Deaf people from accessing text in their primary language. A major barrier to adoption is diffculty learning a system which represents complex 3D movements with stationary symbols.
+		</p>
+		
+		<p>
+		We present the frst animated sign language character system prototype. Like Chinese characters and heiroglyphic logograms, our animated characters represent individual signs, and form lines of text. Each character is composed of a confguration of symbols, some of which may be moving. These characters are based on si5s [4], formed by replacing si5s movement symbols with actual movement on the screen. Using animation allows us to create text that visually resembles sign movements. This visual resemblance to the live language has the potential to make character systems easier to learn and lower the barrier to adoption. We limited the design to animating an existing character system, si5s, in order to build on substantial prior work and include infuences from the Deaf community. 
+		</p>
+		
+		<p style="font-size: 10pt;">
+		[1]  TEDx Talks. 2012. Robert Arnold Augustus at TEDxIslay. <a href="https://www.youtube.com/watch?v=SYHs3D6jJ_o&t=271s">https://www.youtube.com/watch?v=SYHs3D6jJ_o&t=271s</a>. (2012).<br> <br>
+		[2] Donald A Grushkin. 2017. Writing Signed Languages: What For? What Form? <i> American Annals of the Deaf </i> 161, 5 (2017), 509–527.  <br> <br>
+		[3] Marina McIntire, Don Newkirk, Sandra Hutchins, and Howard Poizner. 1987. Hands and faces: A Preliminary Inventory for Written ASL. <i> Sign Language Studies </i> 56, 1 (1987), 197–241.<br><br>
+		[4] RA Augustus, E Ritchie, and S Stecker. 2013. The Offcial American Sign Language Writing Textbook. <i>ASLized</i> (2013)
+		
+		</p>
+		
+		<!--
+		<p style="font-size: 14pt;"> We limited the design to animating an existing character system, si5s, in order to build on substantial prior work and include infuences from the Deaf community. We chose si5s for the following reasons:
+		<ul>
+			<li> It was designed by Deaf community members, and endorsed by Gallaudet University (e.g., <a href="http://www.gallaudet.edu/academic-catalog/center-for-continuing-studies/pst-courses"> PST 275 - Introduction to ASL Writing: Si5s System </a>), the leading university in the world serving primarily Deaf students.</li>
+			<li> It is featural, meaning that it represents sign features separately with component symbols, which allows for movement symbols to be replaced by animations of other symbols. For example, where the notation indicates that a hand moves up and down, we remove the motion symbol and animate the referenced handshape symbol instead.</li>
+			<li> Its handshape and location symbols are fairly iconic, meaning that they roughly resemble handshapes and body parts, which contributes to understandability without training. </li>
+			<li> Elegance and simplicity of the system.</li>
+			<li> The symbols comprising the character set are publicly available for download from ASLized. </li> 
+		</ul>
+		-->
+		
+		<h2> Animated Si5s Prototype Demo </h2>
+		<!--<h2> Demo: Joseph Davis, <i>Deaf-Blind Ninja</i>, in our Animated Si5s prototype </h2>-->
+        <!-- TODO: Fix some squinty eyes have full eyebrows -->
+        <!-- TODO: Cut mouths -->
+		
+		<p style="font-size: 10pt;"> Original story: Davis, J. (2011). Deaf-Blind Ninja. Journal of American Sign Languages and Literatures. <a href="http://journalofasl.com/deaf-blind-ninja/">http://journalofasl.com/deaf-blind-ninja/</a></br><br>
+		
+		Original (non-animated) si5s text: RA Augustus, E Ritchie, and S Stecker. 2013. The Offcial American Sign Language Writing Textbook. <i>ASLized</i> (2013).</p>
+
+        <p><b>Display mode:</b>
+		<select onchange="changeDisplay()" id="mode">
+			<option value="full">Full text, all animated</option>
+			<option value="hover">Full text, hover mouse to animate</option>
+			<option value="scroll">Full text, left/right keys to animate</option>
+			<option value="one">Single sign, left/ight keys to progress</option>
+		</select></p>
+
+			
+		<div class="animatedASL" style="font-size: 14pt;">
+			<span class="lineNumber"> 1. </span>
+			<!-- 1st ROW -->
+			<table id='1.1' class="sign">
+				<tr>
+					<td colspan="2"><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/WHquestion_1.png" /></td>
+				</tr>
+				<tr>
+					<td><img class="handshape moveRightLeft" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" style="width: .5em;"/></td>
+					
+                    <td><img class="handshape flip moveRightLeft_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" style="width: .5em;"/></td>
+				</tr>
+			</table>
+
+			<table id='1.2' class="sign">
+				<tr>
+					<td><img class="handshape moveDown" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+				</tr>
+				<tr>
+					<td><img class="handshape rotate90_flip" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" /></td>
+				</tr>
+			</table>
+			
+			<table id='1.3' class="sign">
+				<tr>
+					<td><img class="handshape rotate330_flip" src="ASLwritingfont/ASL_Writing_Font/Digibet/3_closed.png" style="margin-bottom: -1em; margin-left: .6em"/></td>
+				</tr>
+				<tr>
+					<td><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/shoulder.png" /></td>
+				</tr>
+			</table>
+
+			<table id='1.4' class="sign">
+				<tr>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/forehead.png"/></td>
+				</tr>
+				<tr>
+					<td><img class="handshape moveLeft_rotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+					<td><img class="handshape moveRight_rotate270_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+				</tr>
+			</table>
+			
+			<span class="lineNumber"><br>
+			<!-- 2nd ROW -->
+			2. </span>
+			<table id='2.1' class="sign">
+				<tr>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/forehead.png"/></td>
+				</tr>
+				<tr>
+					<td><img class="handshape moveLeft_thenRotate90_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/1_thumb_bar.png" /></td>
+					<td><img class="handshape moveRight_thenRotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/1_thumb_bar.png" /></td>
+				</tr>
+			</table>
+			
+			<table id='2.2' class="sign">
+				<tr>
+					<td>
+						<div style="position: relative">
+							<img style="position: relative" class="handshape circle_clockwise_thenPause_small_rotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" />
+							<img style="position: absolute; top:0;" class="handshape pause_thenArcLeftDown_rotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/S.png" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/forehead.png"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			
+			<table id='2.3' class="sign">
+				<tr>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/shoulder.png" /></td>
+				</tr>
+				<tr>
+					<td><img class="handshape rotate90_thenMoveDown" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+					<td><img class="handshape rotate90_thenMoveDown_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+				</tr>
+			</table>
+			
+			<table id='2.4' class="sign">
+				<tr>
+					<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/chest.png" /></td>
+					<td style="vertical-align: middle;"><img class="handshape moveLeft_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+				</tr>
+			</table>
+				
+			<span class="lineNumber"><br>
+			<!-- 3rd ROW -->
+			 3. </span>
+			 
+			<table id='3.1' class="sign">
+				<tr>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/shoulder.png" /></td>
+				</tr>
+				<tr>
+						<td><img class="handshape moveRight_andRotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+						<td><img class="handshape arcDownLeft_rotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+				</tr>
+			</table>
+
+
+			<table id='3.2' class="sign">
+				<tr>
+					<td><img class="handshape arcUpLeft_pause" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+					<td><img class="handshape arcDownRight_rotate330_pause" src="ASLwritingfont/ASL_Writing_Font/Digibet/V.png" /></td>
+					</tr>
+			</table>
+
+			<table id='3.3' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/WHquestion_1.png" /></td>
+					<td><img class="handshape flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+				</tr>
+				<tr>
+					<td></td>				
+					<td><img class="handshape" src="ASLwritingfont/ASL_Writing_Font/Digibet/V.png" /></td>
+				</tr>
+			</table>
+
+			<table id='3.4' class="sign">
+				<tr>
+					<td><img class="handshape tiltDownRight" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+					<td><img class="handshape tiltDownRight_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+				</tr>
+			</table>
+
+			<!-- TODO NOTE: Top handshape should rotate -90deg to to
+uch the other one. -->
+			<table id='3.5' class="sign">
+				<tr>
+					<td><img class="handshape moveDown_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+				</tr>
+				<tr>
+					<td><img class="handshape rotate90_flip" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" /></td>
+				</tr>
+			</table>
+
+			<span class="lineNumber"><br>
+			<!-- 4th ROW -->
+			  4. </span>
+
+			<!-- TODO NOTE: alternate these wiggles. -->
+			<table id='4.1' class="sign">
+				<tr>
+					<td><img class="handshape wiggle_flipped_rotate180" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="margin-right:-.2em;" /></td>
+					<td><img class="handshape wiggle_rotate180" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="margin-left: -.2em;"/></td>
+				</tr>
+			</table>
+
+			<table id='4.2' class="sign">
+				<tr>
+					<td><div style="position: relative">
+						<img style="position: relative" class="mouth flash_background" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/flat.png" />
+						<img style="position: absolute; top:0" class="mouth flash_foreground" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/open.png" />
+						</div>
+					</td>	
+				</tr>
+			</table>
+			
+			<table id='4.3' class="sign">
+					<tr>
+						<td><img class="handshape rotate90_thenBumpy" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+					</tr>
+					<tr>
+						<td><img class="handshape rotate90_flip" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" /></td>
+					</tr>
+			</table>
+
+			<table id='4.4' class="sign">
+				<tr>
+					<td><img class="handshape tiltDownRight" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+					<td><img class="handshape tiltDownRight_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+				</tr>
+			</table>			
+
+			<table id='4.5' class="sign">
+				<tr>
+					<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/face_profile.png" /></td>
+					<td><img class="handshape moveLeft" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+				</tr>
+			</table>
+
+			<!-- TODO: MATCH VIDEO? :10 -->
+			<table id='4.6' class="sign">
+				<tr>
+					<td><img class="handshape moveRight" src="ASLwritingfont/ASL_Writing_Font/Digibet/O_twofingers.png" /></td>
+				</tr>
+			</table>
+
+			<span class="lineNumber"><br>
+			<!-- 5th ROW -->
+			 5. </span>
+
+			<table id='5.1' class="sign">
+				<tr>
+					<td><img class="handshape tiltUpLeft" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+					<td><img class="handshape tiltUpLeft_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/W.png" /></td>
+				</tr>
+			</table>
+
+			<table id='5.2' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/WHquestion_1.png" /></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="handshape moveDownRight_curvy" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td><img class="handshape" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+				</tr>
+			</table>
+
+			<table id='5.3' class="sign">
+				<tr>
+					<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/chest.png" /></td>
+					<td><img class="handshape moveRight_thenPause_rotate270" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+					<td><img class="handshape pause_thenMoveRight" src="ASLwritingfont/ASL_Writing_Font/Digibet/O_twofingers.png" /></td>
+				</tr>
+			</table>
+			
+			<table id='5.4' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/squinty.png" /></td>
+					<td><img class="handshape pause_thenMoveUp_rotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+					<td><img class="handshape pause_thenMoveUp_rotate270_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="handshape moveUp_thenPause_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/O_twofingers.png" /></td>
+					<td><img class="handshape moveUp_thenPause" src="ASLwritingfont/ASL_Writing_Font/Digibet/O_twofingers.png" /></td>
+				</tr>
+			</table>	
+
+			<table id='5.5' class="sign">
+				<tr>
+						<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/squinty.png" style="margin-bottom: -.5em" /></td>
+				</tr>
+				<tr>
+					<td>
+						<div style="position: relative">
+							<img style="position: relative" class="mouth flash_background" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/flat.png" />			
+							<img style="position: absolute; top:0" class="mouth flash_foreground" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/open.png" />
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<span class="lineNumber"><br>
+			<!-- 6th row -->
+			 6. </span>
+
+			<!-- VIDEO :13 -->
+			<table id='6.1' class="sign">
+				<tr>
+					<td><img class="handshape moveDownRight_thenPause_rotate90" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+					<td></td>
+					<td><img class="handshape moveDownLeft_thenPause_rotate270_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+				</tr>
+				<tr>
+					<td ><img class="handshape pause_thenAppear_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/O_twofingers.png" style="margin-left: .65em;"/></td>
+					<td ><img class="handshape pause_thenAppear" src="ASLwritingfont/ASL_Writing_Font/Digibet/O_twofingers.png"/></td>
+				</tr>
+			</table>
+
+			<table id='6.2' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/squinty.png" /></td>
+					<td></td>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/forehead.png"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/chest.png" /></td>
+					<td><img class="handshape" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+					<td><img class="handshape wiggle_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+				</tr>
+			</table>
+
+			<table id='6.3' class="sign">
+				<tr>
+					<td><img class="handshape rotate_thenRotate90_thenBumpy" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="margin-bottom: -1em;" /></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="2"><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/arm.png"/></td>
+				</tr>
+			</table>
+
+			<table id='6.4' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical.png" style="margin-bottom: -.5em;" /></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<div style="position: relative;">
+							<img class="mouth" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/open.png" style="position: relative;" />
+							<img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/arm.png" style="position: relative;" />
+							<img class="handshape moveUp_wiggly" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="position: absolute; left: 3em; bottom: 1em;" />
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<!-- 7th row -->
+			<span class="lineNumber"> <br> 7. </span>
+			<table id='7.1' class="sign">
+				<tr>
+					<td><img class="eyebrows shrink" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/WHquestion_1.png" /></td>
+				</tr>
+				<tr>			
+					<td>
+						<div style="position: relative">
+								<img style="position: relative" class="mouth flashFirst_shrink" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/open.png" />
+								<img style="position: absolute; top:0" class="mouth hideFirst_shrink" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/flat.png" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+			<table id='7.2' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical.png" style="margin-bottom: -.3em;" /></td>
+							<td></td>
+							<td><img class="handshape flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" />
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="location tall tiltRight_flipped_thenPause" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/face_profile.png" /></td>
+					<td><img class="handshape pause_thenMoveLeft_rotate330" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="margin-bottom: .5em; margin-left: .5em;" /></td>
+				</tr>
+			</table>
+
+			<table id='7.3' class="sign">
+				<tr>
+					<td>
+						<div style="position: relative">
+							<img style="position: relative" class="mouth flash_background" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/flat.png" />
+							<img style="position: absolute; top:0" class="mouth flash_foreground" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/open.png" />
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<table id='7.4' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical_squinty.png" /></td>
+					<td></td>
+					<td><img class="handshape arcUpDown_thenStay " src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" style="margin-left: .6em; margin-bottom: -2em;" /></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/face_profile.png" style="margin-bottom: -.3em;" /></td>
+					<td>
+						<div style="position: relative;">
+							<img class="handshape arcUpDown_thenPause_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="position: relative;" />
+							<img class="handshape pause_thenEaseDown_flipped " src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" style="position: absolute; left:0; margin-left: .5em; margin-bottom: -2em;" />
+						</div>
+					</td>
+					<td></td>
+
+				</tr>
+			</table>
+			
+			<table id='7.5' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical.png" style="margin-bottom: -.3em;" /></td
+>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="handshape" src="ASLwritingfont/ASL_Writing_Font/Digibet/S.png" /></td>
+					<td><img class="handshape moveLeft_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" style="margin-bottom: .2em;"/></td>
+				</tr>
+			</table>			
+
+
+			<span class="lineNumber"> <br>
+			<!-- 8th row -->
+			8.</span>
+
+			<table id='8.1' class="sign">
+				<tr>
+					<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical_squinty.png" style="margin-bottom: -.3em;" /></td>
+					<td><img class="handshape moveUp_zigZag_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" style="margin-bottom: -.8em; margin-left: .5em;"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><img class="handshape moveUp_zigZag" src="ASLwritingfont/ASL_Writing_Font/Digibet/S.png" /></td>
+				</tr>
+			</table>
+
+
+			<table id='8.2' class="sign">
+				<tr>
+					<td></td>
+					<td>
+						<div style="position: relative;  margin-bottom: -.5em;">
+							<img class="eyebrows appear_thenPause" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical.png" style="position: relative;" />
+							<img class="eyebrows pause_thenAppear" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical_squinty.png" style="position: absolute; left:0;" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<div style="position: relative">
+							<img style="position: relative" class="mouth appear_thenPause" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/open.png" />
+							<img style="position: absolute; top:0" class="mouth pause_thenAppear" src="ASLwritingfont/ASL_Writing_Font/Mouth_Marks/flat.png" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><img class="handshape moveRight_thenPause_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" /></td>
+					<td><img class="handshape pause_thenAppear_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" /></td>
+					<td><img class="handshape pause_thenAppear" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" style="margin-left: -1em; margin-right: 1em;" /></td>
+					<td><img class="handshape moveLeft_thenPause" src="ASLwritingfont/ASL_Writing_Font/Digibet/5.png" style="margin-left: -1em; margin-right: 1em;"  /></td>
+				</tr>
+		</table>
+
+		<table id='8.3' class="sign">
+			<tr>
+				<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical.png" style="margin-bottom: -.3em;" /></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/face_profile.png" /></td>
+				<td><img class="handshape moveLeft_flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>
+			</tr>
+		</table>
+
+		<table id='8.3' class="sign">
+			<tr>
+				<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical_squinty.png" style="margin-bottom: -.3em;" /></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img class="handshape circle_counterClockwise" src="ASLwritingfont/ASL_Writing_Font/Digibet/S.png" style="animation-delay: .4s"  /></td>
+				<td><img class="handshape circle_clockwise" src="ASLwritingfont/ASL_Writing_Font/Digibet/S.png" /></td>
+			</tr>
+		</table>
+						
+		<table id='8.4' class="sign">
+			<tr>
+				<td><img class="handshape circle_andRotate" src="ASLwritingfont/ASL_Writing_Font/Digibet/S.png" /></td>
+			</tr>
+		</table>
+
+		<table id='8.4' class="sign">
+			<tr>
+				<td><img class="handshape circle_andRotate" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" /></td>						
+			</tr>
+		</table>
+		
+		<span class="lineNumber"> <br>
+		<!-- 9th row -->
+		9. </span>
+
+		<table id='9.1' class="sign">
+			<tr>
+				<td><img class="handshape rotate_thenRotate90_thenBumpyFar" src="ASLwritingfont/ASL_Writing_Font/Digibet/1.png" style="margin-bottom: -1em;" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/arm.png"/></td>
+				<td><img class="handshape rotate90_flip" src="ASLwritingfont/ASL_Writing_Font/Digibet/5_thumb.png" /></td>
+			</tr>
+		</table>
+
+		<table id='9.2' class="sign">
+			<tr>
+				<td></td>
+				<td></td>
+				<td><img class="location wide" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/forehead.png"/></td>
+				<td><img class="eyebrows" src="ASLwritingfont/ASL_Writing_Font/Eyebrow_Marks/yesno_topical_squinty.png" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><img class="location tall flipped" src="ASLwritingfont/ASL_Writing_Font/Locative_Marks/chest.png" /></td>
+				<td><img class="handshape flipped" src="ASLwritingfont/ASL_Writing_Font/Digibet/U.png" /></td>
+				<td></td>		
+				</tr>
+		</table>
+
+	</div>
+
+	<!--<h2> Joseph Davis: Deaf-Blind Ninja in live ASL </h2>-->
+	<!--<p> The above story is Deaf-Blind Ninja, signed by Joseph Davis. </p>
+	<p style="font-size: 14pt;"> on YouTube - signed by Joseph Davis, edited by Elsie Stecker, published by ASLized! </p>
+	<iframe width="440" height="300" src="https://www.youtube.com/embed/nSIwfzGZkxE?ecver=1" frameborder="0" allowfullscreen></iframe>-->
+	
+	</div>
+</body>
+</html>
+
+
+<script>
+
+        var displayMode = 'full';
+
+        var maxDisplayedIndex = 40;
+        var minDisplayedIndex = 0;
+
+        var displayedIndex = 0;
+        var animatedImage = 0;
+
+        $(document).ready(function(){
+
+			$(".sign").mouseenter(function() {
+					if (displayMode == 'hover'){
+							$(this).find("img").removeClass("frozenSign");
+					}
+			});
+
+			$(".sign").mouseleave(function() {
+					if (displayMode == 'hover'){
+							$(this).find("img").addClass("frozenSign");
+					}
+			});
+		});
+		
+		
+        /* Clear formatting from all modes. */
+        function eraseAllModes(){
+                $(".sign").each(function(index){
+                        $(this).removeClass("visibleSign").removeClass("invisibleSign");
+                        $(this).find("img").removeClass("frozenSign");
+                })
+        }
+
+
+        /* Change the display mode. */
+        function changeDisplay(){
+                var newMode = $( "#mode" ).val();
+                displayMode = newMode;
+
+                if (newMode == 'full'){
+                        eraseAllModes();
+                }		
+                else if (newMode == 'one'){
+                        eraseAllModes();
+                        $(".sign").each(function(index){
+                                if (index == minDisplayedIndex){
+                                        $(this).addClass("visibleSign");
+                                }
+                                else{
+                                        $(this).addClass("invisibleSign");
+                                }
+                        })
+                        displayedIndex = 0;
+                }
+                else if (newMode == 'scroll'){
+                        eraseAllModes();
+                        $(".sign").each(function(index){
+                                if (index != minDisplayedIndex){
+                                        $(this).find("img").addClass("frozenSign");
+                                }
+                        })
+                        animatedIndex = 0;
+
+                }else if (newMode == 'hover'){
+                        eraseAllModes();
+                        $(".sign").each(function(index){
+                                $(this).find("img").addClass("frozenSign");
+                        })
+                }
+        }
+
+        /* Display the next sign and increment sign counter. */
+        function displayNextSign(){
+			if (displayedIndex < maxDisplayedIndex){
+					$(".sign").each(function(index){
+							if (index == displayedIndex){
+									$(this).removeClass("visibleSign").addClass("invisibleSign");
+							}else if (index == displayedIndex + 1){
+									$(this).removeClass("invisibleSign").addClass("visibleSign");
+							}
+					})
+					displayedIndex = displayedIndex + 1;
+                }
+        }
+
+        /* Display the previous sign and decrement sign counter. */
+        function displayPreviousSign(){
+                if (displayedIndex > minDisplayedIndex){
+                        $(".sign").each(function(index){
+                                if (index == displayedIndex - 1){
+                                        $(this).removeClass("invisibleSign").addClass("visibleSign");
+                                }else if (index == displayedIndex){
+                                        $(this).removeClass("visibleSign").addClass("invisibleSign");
+                                }
+                        })
+                        displayedIndex = displayedIndex - 1;
+                }
+        }
+
+        /* Display the next sign and increment sign counter. */
+        function animateNextSign(){
+                if (animatedIndex < maxDisplayedIndex){
+                        $(".sign").each(function(index){
+                                if (index == animatedIndex){
+                                        $(this).find("img").addClass("frozenSign");
+                                }else if (index == animatedIndex + 1){
+                                        $(this).find("img").removeClass("frozenSign");
+                                }
+                        })
+                        animatedIndex = animatedIndex + 1;
+                }
+        }
+
+
+        /* Display the previous sign and decrement sign counter. */
+        function animatePreviousSign(){
+                if (animatedIndex > minDisplayedIndex){
+                        $(".sign").each(function(index){
+                                if (index == animatedIndex - 1){
+                                        $(this).find("img").removeClass("frozenSign");
+                                }else if (index == animatedIndex){
+                                        $(this).find("img").addClass("frozenSign");
+                                }
+                        })
+                        animatedIndex = animatedIndex - 1;
+                }
+        }
+
+        /* Listen for right and left key, which trigger movingl left/right in "one" mode */
+        $(document).keydown(function(e) {
+            switch(e.which) {
+                case 37: // left
+                        if (displayMode == 'one'){
+                                displayPreviousSign();
+                        }else if (displayMode == 'scroll'){
+                                animatePreviousSign();
+                        }
+                        console.log('left');
+                break;
+
+                case 39: // right
+                        if (displayMode == 'one'){
+                                displayNextSign();
+                        }else if (displayMode == 'scroll'){				
+                                animateNextSign();
+                        }
+                        console.log('right');
+                break;
+
+                default: return; // exit this handler for other keys
+            }
+            e.preventDefault(); // prevent the default action (scroll / move caret)
+        });
+
+</script>
+
+										
