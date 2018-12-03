@@ -1,0 +1,485 @@
+/*
+@font-face {
+    font-family: rubik;
+    src: url(../../../better/RubikOne-Regular.ttf);
+}*/
+
+:root {
+	--animation-color0: black;
+	--animation-color1: #d41619; /*#e41a1c;*/
+	--animation-color2: #0c62ca; /*#377eb8;*/
+	--animation-color3: #1aa716; /*#4daf4a;*/
+	--animation-color4: #9c0eb2; /*#984ea3;*/
+	--animation-color5: #ff7e00; /*#ff7f00;*/
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.smartfont.animated {
+    /*word-spacing:.1em;*/
+    line-height: 120%;
+	font-weight: bold;
+	font-family: verdana;
+}
+
+.animated-word {
+    display: inline-block;
+}
+
+.animated-word .letter.c-0 { color: var(--animation-color0);}
+.animated-word .letter.c-1 { color: var(--animation-color1);}
+.animated-word .letter.c-2 { color: var(--animation-color2);}
+.animated-word .letter.c-3 { color: var(--animation-color3);}
+.animated-word .letter.c-4 { color: var(--animation-color4);}
+.animated-word .letter.c-5 { color: var(--animation-color5);}
+
+.tallAnimated {
+	margin-bottom: .5em;
+	height: 1.5em;
+}
+
+
+.animated-word .letter {
+    /*width:1em;*/
+    height: 1em;
+    display: inline-block;
+    /*margin-right:2px;*/
+    /*border-radius:200px;
+    animation-duration:.5s;
+    animation-iteration-count:infinite;
+    animation-timing-function: linear;*/
+    background-size: 51% 51%;
+	text-align: center;
+}
+
+
+.animated-word .letter backdrop {
+	width:1em;
+	height:1em;
+	background-color: var(--main-bg-color);
+}
+
+/*
+.animated-a {
+	animation: orbit .5s linear infinite;
+}*/
+
+.animated-c, .animated-u, .animated-z, .animated-a {
+	animation: orbit_counterclockwise .5s linear infinite;
+}
+
+.animated-n, .animated-r, .animated-v, .animated-s {
+	animation: orbit_clockwise .5s linear infinite;
+}
+
+.animated-y, .animated-k, .animated-f, .animated-x, .animated-m, .animated-d {
+	/*animation: blink-animation .1s infinite alternate;*/
+	/*animation: blink-animation-sudden .2s infinite;*/
+	/*-webkit-animation: blink-animation .1s steps(2, start) infinite;*/
+	/*animation: blink-animation-sudden 1s infinite alternate;*/
+	animation: blink-animation-colorPreserving .1s infinite;
+}
+
+.animated-g, .animated-w, .animated-p, .animated-q, .animated-b, .animated-h {
+	animation: up .2s linear infinite alternate;
+}
+
+/*
+.animated-h {
+	animation: down .2s linear infinite alternate;
+}*/
+
+
+/*************************************************************************************************/
+
+/* Lines floating down. */
+.animated-word .letter.g-1 {
+   /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, transparent 50%, transparent); */
+   background-image: linear-gradient(0deg, var(--main-bg-color) 50%, transparent 50%);
+   /*background-size: 100%;*/
+   border-radius: .1em;
+   animation-name: fullBackground;
+}
+
+/* Lines floating left-to-right. */
+.animated-word .letter.g-2 {
+   background-image: linear-gradient(90deg, var(--main-bg-color) 50%, transparent 50%); 
+   border-radius: .1em;
+   animation-name: fullBackground;
+}
+
+/* Line rotating clockwise. */
+.animated-word .letter.g-3 {
+    animation-duration: 1s;
+    vertical-align: top;
+    border-radius:0;
+    position:relative;
+    height: 0.4em;
+    width: 1em;
+    top: 0.3em;
+    transform-origin: center;
+    animation-name: rotate_clockwise;
+}
+
+
+/* Triangle rotating counter-clockwise. */
+.animated-word .letter.g-4 {
+	background-image:url(purple_triangle.png);
+	background-size:1em 0.85em;
+	background-position: center 0.18em;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	/* border:1px solid white; */
+	border-radius:0;
+	-webkit-filter: hue-rotate(90deg);
+	/* animation-duration: 10s; */
+	animation-name: rotate_counterclockwise;
+}
+
+
+/* Rotating square around perifery -- buggy.*/
+.animated-word .letter.g-5 {
+    animation-duration: 1s;
+    vertical-align: top;
+    border-radius: 0;
+    position: relative;
+    height: .6em;
+    /*width: .3em;*/
+    top: .6em;
+    transform-origin: top;
+    /* background-image: radial-gradient(circle at center, red 5px, transparent 5px); */
+    background-image: linear-gradient(var(--main-bg-color) 50%, transparent 50%), linear-gradient(90deg, var(--main-bg-color) 50%, transparent 50%);
+    background-size: 80%;
+	border-radius: 200px;
+	animation-name: rotate_clockwise;
+}
+
+/* Dots rotating. */
+.animated-word .letter.g-6 {
+	background-image:url(dots_peripheral_clear.png);
+	background-size:1.05em 1.05em;
+	background-position: center;
+	background-repeat:no-repeat;
+	border-radius:200px;
+	animation-name: rotate_clockwise;
+}
+
+/* Semi-circle rotating. */
+.animated-word .letter.g-7 {
+	background-image:url(half-circle_clear.png);
+	background-size:1em 1em;
+	background-position: center;
+	background-repeat:no-repeat;
+	border-radius: 200px;
+	animation-name: rotate_clockwise;
+}
+
+.animated-word .letter.g-8 {
+  animation: blink-animation 2s steps(5, start) infinite;
+  -webkit-animation: blink-animation .1s steps(2, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    /*visibility: hidden;*/
+	opacity: 0.4;
+  }
+}
+@-webkit-keyframes blink-animation-sudden {
+	to{
+		visibility: hidden;
+	}
+}
+
+@keyframes blink-animation-colorPreserving {
+	0%{
+		opacity: 1;
+	}
+	66%{
+		opacity: 1;
+	}
+	81%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+	
+}
+
+/* 3-spoke wheel rotating. */
+.animated-word .letter.g-9 {
+	background-image:url(3wheel_clear.png);
+	background-size:1.1em 1.1em;
+	background-position: center;
+	background-repeat:no-repeat;
+	border-radius: 200px;
+	animation-name: rotate_clockwise;
+}
+
+
+.animated-word .letter.g-10 {
+	
+	/*top: 16rem;
+	left: -1rem;*/
+	/*width: 2%;*/
+	background-image: linear-gradient(45deg, var(--main-bg-color) 25%, transparent 25%, transparent 50%, var(--main-bg-color) 50%, var(--main-bg-color) 75%, transparent 75%, transparent);
+	/*background-image: linear-gradient(45deg, var(--main-bg-color) 50%, transparent 50%, transparent);*/
+	background-position: 0rem -244rem;
+	background-size: 4rem 4rem;
+	animation: stripes 3s linear infinite; 
+	-o-animation:  stripes 3s linear infinite; 
+	-ms-animation:  stripes 3s linear infinite;
+	-moz-animation:  stripes 3s linear infinite;  
+	-webkit-animation:  stripes 10s linear infinite; 
+     border-radius: .1em;
+	 /*outline: yellow solid thin;*/
+	
+}
+
+.animated-word .letter.g-11 {
+	border-radius: 200px;
+	/*background-image: linear-gradient(0deg, var(--main-bg-color), transparent 15%, transparent 85%, var(--main-bg-color));*/
+	/*background-size: 100% 70%;*/
+	animation: upDown .2s linear infinite alternate;
+}
+
+.animated-word .letter.g-12 {
+	border-radius: 200px;
+	/*background-image: linear-gradient(0deg, var(--main-bg-color), transparent 15%, transparent 85%, var(--main-bg-color));*/
+	/*background-size: 100% 70%;*/
+	animation: breathing .4s linear infinite alternate;
+}
+
+.animated-word .letter.g-13 {
+	border-radius: 200px;
+	/*background-image: linear-gradient(0deg, var(--main-bg-color), transparent 15%, transparent 85%, var(--main-bg-color));*/
+	/*background-size: 100% 70%;*/
+	animation: growing .2s linear infinite alternate;
+	margin-left: .4em;
+}
+
+
+.animated-word .letter.g-14 {
+	
+	top: 16rem;
+	left: -1rem;
+	/*width: 2%;*/
+	background-image: linear-gradient(90deg, var(--main-bg-color) 25%, transparent 25%, transparent 50%, var(--main-bg-color) 50%, var(--main-bg-color) 75%, transparent 75%, transparent);
+	/*background-image: linear-gradient(90deg, var(--main-bg-color) 50%, transparent 50%, transparent);*/
+	background-position: 0rem -244rem;
+	background-size: 4rem 4rem;
+	animation: stripesVertical 4s linear infinite; 
+	-o-animation:  stripesVertical 4s linear infinite; 
+	-ms-animation:  stripesVertical 4s linear infinite;
+	-moz-animation:  stripesVertical 4s linear infinite;  
+	-webkit-animation:  stripes 14s linear infinite; 
+     border-radius: .1em;
+	 /*outline: yellow solid thin;*/
+	
+}
+
+.animated-word .letter.g-15 {
+	
+	top: 16rem;
+	left: -1rem;
+	/*width: 2%;*/
+	background-image: linear-gradient(0deg, var(--main-bg-color) 25%, transparent 25%, transparent 50%, var(--main-bg-color) 50%, var(--main-bg-color) 75%, transparent 75%, transparent);
+	/*background-image: linear-gradient(0deg, var(--main-bg-color) 50%, transparent 50%, transparent);*/
+	background-position: 0rem -244rem;
+	background-size: 4rem 4rem;
+	animation: stripesVertical 4s linear infinite; 
+	-o-animation:  stripesVertical 4s linear infinite; 
+	-ms-animation:  stripesVertical 4s linear infinite;
+	-moz-animation:  stripesVertical 4s linear infinite;  
+	-webkit-animation:  stripesVertical 14s linear infinite; 
+     border-radius: .1em;
+	 
+	/*outline: yellow solid thin;*/
+}
+
+
+/* Semi-circle rotating without background image. */
+.animated-word .letter.g-16 {
+	/*background-image:url(half-circle_clear.png);*/
+	background-image: linear-gradient(0deg, var(--main-bg-color) 50%, transparent 50%, transparent);
+	background-size:1em 1em;
+	background-position: center;
+	background-repeat:no-repeat;
+	border-radius: 200px;
+	animation-name: rotate_clockwise;
+}
+
+
+
+.animated-word.delay-1 .letter {
+    animation-delay: .1s;
+}
+.animated-word.delay-2 .letter {
+    animation-delay: .3s;
+}
+.animated-word.delay-3 .letter {
+    animation-delay: .2s;
+}
+.animated-word.delay-4 .letter {
+    animation-delay: .4s;
+}
+
+@keyframes fullBackground {
+   to {background-position: 100% 100%;} 
+}
+
+@keyframes rotate_counterclockwise {
+     to { -webkit-transform: rotate(-360deg); } 
+}
+
+@keyframes rotate_clockwise {
+     to { -webkit-transform: rotate(360deg); } 
+}
+
+
+@keyframes bouncing {
+	to {background-image: linear-gradient(0deg, var(--main-bg-color), transparent 30%, transparent 70%, var(--main-bg-color));}
+}
+
+@keyframes bouncing2 {
+	to {bottom: 10%;}
+}
+
+@keyframes upDown {
+    0% { transform: translateY(0); 
+		height: 1em;}
+    100% { transform: translateY(20%); 
+		height: 0em;
+		/*width: 1.1em; */}
+}
+
+
+@keyframes up {
+    0% { transform: translateY(0); 
+		/*height: 1em;*/}
+    100% { transform: translateY(-40%); 
+		/*height: 0em;*/
+		/*width: 1.1em; */}
+}
+
+@keyframes down {
+    0% { transform: translateY(0); 
+		/*height: 1em;*/}
+    100% { transform: translateY(40%); 
+		/*height: 0em;*/
+		/*width: 1.1em; */}
+}
+
+@keyframes breathing{
+	to { transform: translateX(30%);
+		width: .5em;}
+}
+
+@keyframes leftRight {
+	0% { transform: translateX(0);}
+	100% { transform: translateX(20%);}
+}
+
+
+@keyframes growing {
+	0% { width: .1em;
+		height: .1em;
+		transform: translateY(-.4em);}
+	100% { width: 1em;
+		height: 1em;
+		bottom: .4em;
+		transform: translateX(-.4em);}
+}
+
+
+@keyframes growing-u {
+	0% { width: .1em;
+		height: .1em;
+		transform: translateY(-.4em);}
+	100% { width: 1em;
+		height: 1em;
+		bottom: .4em;
+		transform: translateX(-.4em);}
+}
+
+@keyframes stripes {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 60rem 0;  }
+}
+
+@-o-keyframes stripes {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 60rem 0;  }
+}
+
+@-ms-keyframes stripes {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 60rem 0;  }
+}
+
+@-moz-keyframes stripes {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 60rem 0;  }
+}
+
+@-webkit-keyframes stripes {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 60rem 0;  }
+}
+
+
+
+
+@keyframes stripesVertical {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 0 60rem;  }
+}
+
+@-o-keyframes stripesVertical {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 0 60rem;  }
+}
+
+@-ms-keyframes stripesVertical {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 0 60rem;  }
+}
+
+@-moz-keyframes stripesVertical {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 0 60rem;  }
+}
+
+@-webkit-keyframes stripesVertical {
+  0% {  background-position: 0 0; } 
+  100% {  background-position: 0 60rem;  }
+}
+
+
+@keyframes alternatingBackground {
+	0% {
+		opacity: 0;
+	}50% {
+		opacity: 0;
+	}
+	51% {
+		opacity: 1;
+	}
+	99% {
+		opacity: 1;
+	}
+}
+
+
+@keyframes orbit_clockwise {
+	from {transform: rotate(0deg) translateX(.1em) rotate(0deg);}
+	to {transform: rotate(360deg) translateX(.1em) rotate(-360deg);}
+}
+
+
+@keyframes orbit_counterclockwise {
+	from {transform: rotate(0deg) translateX(.1em) rotate(0deg);}
+	to {transform: rotate(-360deg) translateX(.1em) rotate(360deg);}
+}

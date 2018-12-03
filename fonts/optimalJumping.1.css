@@ -1,0 +1,170 @@
+/*@font-face {
+    font-family: rubik;
+    src: url(../../../better/RubikOne-Regular.ttf);
+}*/
+
+:root {
+	--optimal-red: hsl(0, 100%, 50%);
+	--optimal-orange: hsl(30, 100%, 50%);
+	--optimal-yellow: hsl(60, 100%, 50%);
+	--optimal-green: hsl(120, 100%, 50%);
+	--optimal-cyan: hsl(190, 100%, 50%);
+	--optimal-blue: hsl(240, 100%, 50%);
+	--optimal-purple: purple;
+	--optimal-pink: hsl(300, 100%, 50%);
+	--optimal-white: hsl(0, 100%, 100%);
+	--optimal-grey: grey;
+	--optimal-brown: hsl(30, 100%, 30%);
+}
+
+
+
+.smartfont.optimalJumping {
+    word-spacing:1em;
+    line-height: 150%;
+	font-weight: 600;
+	/*font-family: rubik;*/
+}
+
+.optimalJumping-word {
+    display: inline-block;
+}
+
+
+.optimalJumping-word .letter {
+    width:1em;
+    height: 1em;
+    display: inline-block;
+    margin-right:.11em;
+    /*border-radius:200px;
+    animation-duration:.5s;
+    animation-iteration-count:infinite;
+    animation-timing-function: linear;*/
+    background-size: 51% 51%;
+	text-align: center;
+}
+
+.optimalJumping-word .letter backdrop {
+	width:1em;
+	height:1em;
+	background-color: var(--main-bg-color);
+}
+
+
+.c-r {
+	background-color: hsl(0, 100%, 50%) !important;
+}
+
+.c-o {
+	background-color: hsl(30, 100%, 50%) !important;
+}
+
+.c-y {
+	background-color: hsl(60, 100%, 50%) !important;
+}
+
+.c-g {
+	background-color: hsl(120, 100%, 50%) !important;
+}
+
+.c-c {
+	background-color:hsl(190, 100%, 50%) !important;
+}
+
+.c-b {
+	background-color: hsl(240, 100%, 50%) !important;
+}
+
+.c-u {
+	background-color: purple !important;
+}
+
+.c-i {
+	background-color: hsl(300, 100%, 50%) !important;
+}
+
+.c-w {
+	background-color: hsl(0, 100%, 100%) !important;
+}
+
+.c-z {
+	background-color: hsl(30, 100%, 30%) !important;
+}
+
+.c-x {
+	background-color: grey !important;
+}
+
+
+.m-no{
+	animation: none !important;
+}
+
+.m-qf {
+	animation: blink-animation-colorPreserving .1s infinite !important;
+}
+
+.m-sf {
+	animation: blink-animation-colorPreserving .2s infinite !important;
+}
+
+.m-qp {
+	animation: blink-animation .15s ease-in-out infinite alternate !important;
+}
+
+.m-sp {
+	animation: blink-animation .3s ease-in-out infinite alternate !important;
+}
+
+.m-qj {
+	animation: upDown .15s ease-in-out infinite alternate !important;
+}
+
+.m-sj {
+	animation: upDown .3s ease-in-out infinite alternate !important;
+}
+
+.m-sr {
+	width: .5em !important;
+	-webkit-animation: rotate_clockwise .5s linear infinite !important;
+	-moz-animation: rotate_clockwise .5s linear infinite !important;
+}
+
+.m-qr {
+	width: .5em !important;
+	-webkit-animation: rotate_clockwise .25s linear infinite !important;
+	-moz-animation: rotate_clockwise .25s linear infinite !important;
+}
+
+
+@keyframes blink-animation-colorPreserving {
+	0%{
+		opacity: 1;
+	}
+	66%{
+		opacity: 1;
+	}
+	67%{
+	/*70%{*/
+		opacity: 0;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+
+@keyframes blink-animation {
+  to {
+    /*visibility: hidden;*/
+	opacity: 0.5;
+  }
+}
+
+@keyframes upDown {
+    0% { transform: translateY(35%); }
+    100% { transform: translateY(-35%); }
+}
+
+
+

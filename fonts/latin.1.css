@@ -1,0 +1,15 @@
+/*.smartfont.Latin {
+    font-weight: 600;
+}*/
+/*
+@font-face {
+    font-family: rubik;
+    src: url(../../../better/RubikOne-Regular.ttf);
+}*/
+
+.smartfont.Latin {
+    /*word-spacing:.35em;*/
+    line-height:120%;
+	font-weight: bold;
+	font-family: verdana;
+}

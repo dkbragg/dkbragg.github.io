@@ -1,0 +1,27 @@
+body{
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: black;
+  position: relative;
+  /*font: 16px/24px NobileRegular, "Lucida Grande", Lucida, Verdana, sans-serif;
+*/
+}
+
+
+select{
+        color: white;
+        background-color: black;
+
+}
+
+.btn{
+        color: white !important;
+        background: black !important;
+        /*border-color: white !important;*/
+}
+
+.btn:hover {
+        border-color: white;
+}
+

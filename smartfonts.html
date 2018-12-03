@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+  <title>Smartfonts</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta name="keywords" content="python web application" />
+  <meta name="description" content="pyramid web application" />
+  
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" /> </script>
+
+  	<script src="js_utils/utils.js" type="text/javascript" /></script>
+	<script src="fonts/font.js" type="text/javascript"/></script>
+	<script src="js_utils/draw.js" type="text/javascript"/></script>
+	
+	<script src="fonts/sixel_color.1.js" type="text/javascript"/></script>
+	<script src="fonts/latinAnimated.1.js" type="text/javascript"/></script>
+	<script src="fonts/optimalBlinking.1.js" type="text/javascript"/></script>
+	<script src="fonts/optimalBlinking_mapped.1.js" type="text/javascript"/></script>
+	<script src="fonts/optimalJumping.1.js" type="text/javascript"/></script>
+	<script src="fonts/latin.1.js" type="text/javascript"/></script>
+	
+	<link href="fonts/sixel_color.1.css" rel="stylesheet" />
+	<link href="fonts/latinAnimated.1.css" rel="stylesheet" />
+	<link href="fonts/optimalBlinking.1.css" rel="stylesheet" />
+	<link href="fonts/optimalBlinking_mapped.1.css" rel="stylesheet" />
+	<link href="fonts/optimalJumping.1.css" rel="stylesheet" />
+	<link href="fonts/latin.1.css" rel="stylesheet" />
+
+	<link href="mine_fontz.css" rel="stylesheet" />
+
+	<link href="mine_fontz_black.css" rel="stylesheet" />
+	<script src="js_utils/dev.js" type="text/javascript" /></script>
+	<link href="fonts/plainBlocks.css" rel="stylesheet" />
+
+
+</head>
+
+<body class="inBody_plain">
+
+
+
+	<div id="bodycontainer">
+	
+
+	<h1 style="color: white;"> Smartfonts & Livefonts Demo</h1>
+	
+	<p style="font-size: 16pt;"> The left side shows plain text, and the right side shows a Smartfont (an alternate English character system). Livefonts are Smartfonts that use animation to differentiate characters, in addition to shape and color. Adjust the blur to simulate blurry vision, and see if you can still differentiate characters in the Smartfont! </p>
+
+
+
+			<div style="float: right; display: inline-block; font-size: 25px">
+					<p style="float: left;">SIZE:</p>
+					<p id="zoomNumber" style="float: left;"> </p>
+					<button id="upButton" style="width: 30px; height: 30px; font-size: 25px; border: grey thin solid;"> + </button> <br>
+					<button id="downButton" style="width: 30px; height: 30px; font-size: 25px; border: grey thin solid;"> - </button>
+			</div>
+
+
+			<div style="float: right; display: inline-block; font-size: 25px">
+					<p style="float: left;">BLUR:</p>
+					<p id="blurNumber" style="float: left;"> </p>
+					<button id="upButton_blur" style="width: 30px; height: 30px; font-size: 25px; border: grey thin solid;"> + </button> <br>
+					<button id="downButton_blur" style="width: 30px; height: 30px; font-size: 25px; border: grey thin solid;"> - </button>
+			</div>
+
+			<!--
+			<select id="backgroundSelector" style="height: 60px; font-size: 50px;">
+					<option value="black" selected="selected"> on black </option>
+					<option value="white"> on white </option>
+			</select>
+			-->
+
+			<select id="fontSelector" style="height: 30px; font-size: 25px;">
+					<!--<option value="Latin" selected="selected"> Latin </option>-->
+					<option value="SixelColor" selected="selected"> 2x3 </option>
+					<option value="Animated"> Basic </option>
+					<option value="OptimalBlinking"> Blink </option>
+					<option value="OptimalBlinkingMapped"> Blink++ </option>
+					<option value="OptimalJumping"> Jump </option>
+
+			</select>
+
+			<p><br><br><br><br></p><p></p><p></p><p></p>
+
+			<div id="latin" style="width: 50%; float: left;"></div>
+			<div id="animated" style="width: 50%; float: right;"></div>
+
+	</div>
+
+
+
+<script>
+
+	//var ourFonts = ['Char', 'Col', 'SixelColor', 'Latin', 'Matilda', 'Motion', 'Tylock']
+	//var ourFonts = ['Char', 'Col', 'SixelColor', 'Latin', 'Matilda', 'MatildaColoured', 'Minuscule', 'Motion', 'Tylock', 'General', 'Animated', 'AnimatedBlocks', 'OptimalBlinking', 'OptimalJumping', 'Hebrew', 'Devangari', 'Armenian', 'Arabic', 'Chinese', 'OptimalBlinkingMapped']
+	
+	var ourFonts = ['SixelColor', 'Animated', 'OptimalBlinking', 'OptimalBlinkingMapped', 'OptimalJumping', 'Latin']
+	
+	var fontIndex = {}
+	for (var i=0; i<ourFonts.length; i++){
+			fontIndex[ourFonts[i]] = i;
+	}
+
+	// Returns the given text as HTML for the given fontname.
+	// (Assuming the fontname has been added to FONTS variable.)
+	// The exemptLetters argument is optional; contains a list of letters to NOT superimpose their Latin forms.
+	function renderText(desiredText, fontName, size, doNotScale, exemptLetters){
+		console.log(fontName);
+		var currFont = FONTS[fontIndex[fontName]];//[1];
+		var scaledSize = (doNotScale) ? size : size * currFont.scale;
+		var textAsHTML;
+		if (fontName == 'OptimalBlinkingMapped' || fontName == 'OptimalJumpingMapped'){
+			textAsHTML = currFont.html(desiredText, scaledSize, exemptLetters);
+		}
+		else{
+			textAsHTML = currFont.html(desiredText, scaledSize);
+		}
+		return textAsHTML;
+	}
+
+	
+
+        //var ourStory = "Check it out -- animated characters!"
+        //var ourStory = "Check it out -- anijated text!"
+
+        var ourStory = "The emergence of personal computing devices offers both a challenge and an opportunity for displaying text: small screens can be hard to read, but also support higher resolution. "
+        ourStory += "In this work, we introduce the idea of animating letters, and propose the first animated script. "
+		ourStory += "Movement and color survive blur, and can improve legibility for low-vision readers. "
+        //var ourStory = "livefonts";
+		
+		
+        /*
+		ourStory += "Usability is also decreased for sighted users straining to read the small letters, especially without glasses at hand. "
+        ourStory += "We propose animated scripts called livefonts for displaying English with improved legibility for all users. "
+        ourStory += "Because paper does not support animation, traditional text is static. "
+        ourStory += "However, modern screens support animation, and livefonts capitalize on this capability. "
+        ourStory += "We evaluate our livefont variations' legibility through a controlled lab study with low-vision and sighted participants, and find our animated scripts to be legible across vision types at approximately half the size (area) of traditional letters, while previous smartfonts (static alternate scripts) did not show a significant legibility advantage for low-vision users. "
+        ourStory += "We evaluate the learnability of our livefont with low-vision and sighted participants, and find it to be comparably learnable to static smartfonts after two thousand practice sentences."
+		*/
+        
+		/*
+        var ourStory = "As small displays on devices like smartwatches  become increasingly common, many people have difficulty reading the text on these displays. "
+        ourStory += "Vision conditions like presbyopia that result in blurry near vision make reading small text particularly hard. "
+        ourStory += "We design multiple different scripts for displaying English text, legible at small sizes even when blurry, for small screens such as smartphones and smartwatches. "
+        ourStory += "These smartfonts redesign visual character presentations to improve the reading experience. Like cursive, Grade 1 Braille, and ordinary fonts, they preserve orthography and spelling. "
+        ourStory += "They have the potential to enable people to read more textcomfortably on small screens, e.g., without reading glasses. "
+        ourStory += "To simulate presbyopia, we blur images and evaluate their legibility using paid crowdsourcing. "
+        ourStory += "We also evaluate the difficulty of learning to read smartfonts and observe a learnability/legibility trade-off. "
+        ourStory += "Our most learnable smartfont can be read at roughly half the speed of Latin after two thousand practice sentences. "
+        ourStory += "It is also legible smaller than half the size of traditional Latin (i.e. English) when blurry. "
+		*/
+        
+		
+        var ourStory_lowerCase = ourStory.toLowerCase();
+		
+		
+        var currSizeIndex;
+        var sizes = []
+        var numSizes = 40;
+        var nextSize = 1;
+        for (var i=0; i<numSizes; i++){
+                sizes.push(nextSize);
+                //nextSize = Math.floor(nextSize * 1.2);
+                nextSize = nextSize * 1.2;
+        }
+
+
+        var currBlurIndex;
+        var blurs = []
+        blurs.push(0);
+        var numBlurs = 30;
+        var nextBlur = .2;
+        for (var i=0; i<numBlurs-1; i++){
+                blurs.push(nextBlur);
+                //nextSize = Math.floor(nextSize * 1.2);
+                nextBlur = nextBlur * 1.42;
+        }
+
+
+        var currFont = 'SixelColor';
+        //var currFont = 'Animated';
+        //var currFont = 'Latin';
+        var currSizeIndex = Math.floor(sizes.length/2.5);
+        var currBlurIndex = 1;
+
+        function refreshText(){
+                $("#animated").empty();
+                var newHTML = "";
+				/*
+                if (currFont == 'OptimalBlinking'){
+                        newHTML = renderText(ourStory_lowerCase, 'OptimalBlinkingMapped', sizes[currSizeIndex], false, ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']);
+
+                }else{
+                        newHTML = renderText(ourStory_lowerCase, currFont, sizes[currSizeIndex], false, []);
+                }*/
+				newHTML = renderText(ourStory_lowerCase, currFont, sizes[currSizeIndex], false, []);
+                $("#animated").append(newHTML);
+
+                $("#latin").empty();
+                var newLatinHTML = renderText(ourStory, 'Latin', sizes[currSizeIndex]);
+                $("#latin").append(newLatinHTML);
+        }
+
+        $(document).ready(function() {
+
+
+                // Make white background.
+                document.body.style.setProperty("--main-bg-color", "black");
+                document.body.style.setProperty("--animation-color0", "white");
+                document.body.style.setProperty("--animationBlocks-color0", "white");
+
+                // Add zoom number.
+                //$("#zoomNumber").append(sizes[currSizeIndex]);
+                //$("#zoomNumber").append(Math.round(sizes[currSizeIndex] * 100) / 100);
+                $("#zoomNumber").append(sizes[currSizeIndex].toFixed(2))
+
+                var newLatinHTML = renderText(ourStory, 'Latin', sizes[currSizeIndex]);
+                $("#latin").append(newLatinHTML);
+
+                var newHTML = "";
+                if (currFont == 'OptimalBlinking'){
+                        newHTML = renderText(ourStory_lowerCase, 'OptimalBlinkingMapped', sizes[currSizeIndex], false, ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']);
+
+                }else{
+                        newHTML = renderText(ourStory_lowerCase, currFont, sizes[currSizeIndex], false, []);
+                }
+
+                //var newHTML = renderText(ourStory, currFont, sizes[currSizeIndex], false, []);
+                $("#animated").append(newHTML);
+
+                // Initialize blur
+                document.getElementById("latin").style.setProperty('filter', 'blur(' + blurs[currBlurIndex] + 'px)');
+                document.getElementById("animated").style.setProperty('filter', 'blur(' + blurs[currBlurIndex] + 'px)');
+                $("#blurNumber").append(blurs[currBlurIndex].toFixed(2));
+
+
+                // Increase text size.
+                $("#upButton").click(function(){
+                        console.log('up button clicked!');
+                        if (currSizeIndex < sizes.length - 1){
+                                //$("#textContainer").empty();
+                                currSizeIndex += 1;
+                                //refreshAlphabetTable(sizes[currSizeIndex]);
+                                //refreshTextDisplay(currFont, sizes[currSizeIndex]);
+                                refreshText();
+                                $("#zoomNumber").empty();
+                                //$("#zoomNumber").append(sizes[currSizeIndex]);
+
+                                //$("#zoomNumber").append(Math.round(sizes[currSizeIndex] * 100) / 100);
+                                $("#zoomNumber").append(sizes[currSizeIndex].toFixed(2))
+                        }
+                })
+
+                // Decrease text size.
+                $("#downButton").click(function(){
+                        console.log('down button clicked!');
+                        console.log('currSizeIndex:', currSizeIndex);
+                        if (currSizeIndex > 0){
+                                //$("#textContainer").empty();
+                                currSizeIndex -= 1;
+                                //refreshAlphabetTable(sizes[currSizeIndex]);
+                                //refreshTextDisplay(currFont, sizes[currSizeIndex]);
+                                refreshText();
+                                $("#zoomNumber").empty();
+                                //$("#zoomNumber").append(sizes[currSizeIndex]);
+
+                                //$("#zoomNumber").append(Math.round(sizes[currSizeIndex] * 100) / 100);
+                                $("#zoomNumber").append(sizes[currSizeIndex].toFixed(2))
+                        }
+                })
+
+                // Increase blur.
+                $("#upButton_blur").click(function(){
+                        if (currBlurIndex < blurs.length - 1){
+                                currBlurIndex += 1;
+
+                                document.getElementById("latin").style.setProperty('filter', 'blur(' + blurs[currBlurIndex] + 'px)');
+                                document.getElementById("animated").style.setProperty('filter', 'blur(' + blurs[currBlurIndex] + 'px)');
+
+                                $("#blurNumber").empty();
+                                $("#blurNumber").append(blurs[currBlurIndex].toFixed(2))
+
+                        }
+                })
+
+                // Decrease blur.
+                $("#downButton_blur").click(function(){
+                        if (currBlurIndex > 0){
+                                currBlurIndex -= 1;
+
+                                document.getElementById("latin").style.setProperty('filter', 'blur(' + blurs[currBlurIndex] + 'px)');
+                                document.getElementById("animated").style.setProperty('filter', 'blur(' + blurs[currBlurIndex] + 'px)');
+
+                                $("#blurNumber").empty();
+                                $("#blurNumber").append(blurs[currBlurIndex].toFixed(2))
+
+                        }
+                })
+
+
+                $("#fontSelector").change(function(){
+                        console.log("changing font.");
+                        currFont = $("#fontSelector :selected").val();
+                        refreshText();
+                })
+
+                // Change the background.
+                $("#backgroundSelector").change(function(){
+                        console.log("changing background!");
+                        var selectedBackground = $("#backgroundSelector :selected").val();
+                        document.body.style.setProperty("--main-bg-color", selectedBackground);
+                        //$("#backgroundArea").css("background", selectedBackground);
+                        if (selectedBackground == "white"){
+                                //$("#backgroundArea").css("color", "black");
+                                $("#animated").css("background", "white");
+                                document.body.style.setProperty("--animation-color0", "black");
+                                document.body.style.setProperty("--animationBlocks-color0", "black");
+                        } else{
+                                //$("#backgroundArea").css("color", "white");
+                                $("#animated").css("background", "black");
+                                document.body.style.setProperty("--animation-color0", "white");
+                                document.body.style.setProperty("--animationBlocks-color0", "white");
+                        }
+                        //document.body.style.setProperty("background-color", selectedBackground);
+                })
+
+        })
+
+
+</script>
+</body>
+</html>

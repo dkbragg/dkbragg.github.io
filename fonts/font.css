@@ -1,0 +1,7 @@
+.smartfont .word {
+    display: inline;
+}
+
+.smartfont {
+    display: inline-block;
+}
