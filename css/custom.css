@@ -119,3 +119,7 @@
     color: white;
 	text-decoration: none;
 }
+
+.badge-award {
+	background-color: #12c !important; /*blue*/
+}
